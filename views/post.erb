@@ -1,0 +1,10 @@
+<form action="/post" method="post" entype="multipart/form-data">
+    <input type="text" name="title" placeholder="目標を入力" required><br>
+    カテゴリーを選択:<select name="category_id" id="category_id" class="form-control">
+       <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+       <% end %>
+    </select><br>
+    詳細：<textarea rows="5" cols="30" name="introduction"></textarea><br>
+    <input type="submit" value="投稿">
+</form>

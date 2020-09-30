@@ -1,0 +1,23 @@
+<h1><%= current_user.name %>のマイページ</h1>
+<% if !@posts.nil? %>
+    <% @posts.each do |post| %>
+      <p>目標:<%= post.title %></p>
+      <p>詳細:<%= post.introduction %></p>
+      <p>投稿者:</p><br>
+    <% end %>
+  <% else %>
+      <p>投稿がありません</p>
+<% end %>
+<section class="center-vertical">
+  <h1><%= current_user.name %>のイイねした投稿</h1>
+  <p>イイねがありません</p>
+</section>
+
+<section class="center-vertical">
+  <h1><%= current_user.name %>のフォロー</h1>
+  <a href="#">フォロー解除</a><br>
+</section>
+
+<section class="center-vertical">
+  <h1><%= current_user.name %>のフォロワー</h1>
+</section>

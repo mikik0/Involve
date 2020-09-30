@@ -13,7 +13,15 @@ helpers do
 end
 
 get '/' do
+  @posts = Post.all
+  @categories = Category.all
   erb :index
+end
+
+get '/home' do
+  @posts = Post.all
+  @categories = Category.all
+  erb :home
 end
 
 get '/signin' do
@@ -46,5 +54,20 @@ end
 
 get '/signout' do
   session[:user] = nil
+  redirect '/'
+end
+
+get '/post' do
+  @categories = Category.all
+  erb :post
+end
+
+post '/post' do
+  Post.create(
+    user_id: session[:user],
+    title: params[:title],
+    category_id: params[:category_id],
+    due_date: params[:date]
+  )
   redirect '/'
 end

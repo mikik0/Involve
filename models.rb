@@ -11,3 +11,11 @@ class User < ActiveRecord::Base
   validates :password,
     length: { in: 3..30 }
 end
+
+class Post < ActiveRecord::Base
+  has_many :categories
+end
+
+class Category < ActiveRecord::Base
+  belongs_to :posts
+end
