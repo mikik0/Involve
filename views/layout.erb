@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>もくちか！</title>
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<body>
+<nav class="center-hrizontal">
+  <a href="/">もくちか！</a>
+  <% if !current_user.nil? %>
+    <a href="/home"></a></li>
+    <a href="/search">search</a></li>
+    <a href="/signout">logout</a>
+  <% else %>
+    <a href="/signup">新規登録</a>
+  <% end %>
+</nav>
+<main>
+
+<%= yield %>
+
+</main>
+</body>
+</html>

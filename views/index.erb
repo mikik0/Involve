@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>もくかち！</title>
-</head>
-<body>
-</body>
-</html>
+<% if current_user.nil? %>
+  <form action="/signin" method="post">
+    <input name="name" placeholder="名前を入力">
+    <input name="password" type="password" placeholder="パスワード">
+    <input class="form-control col-lg-4" type="submit" value="ログイン">
+  </form>
+<% end %>
