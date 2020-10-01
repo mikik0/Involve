@@ -1,23 +1,19 @@
-<h1><%= current_user.name %>のマイページ</h1>
+<h1><%= current_user.name %>さんのマイページ</h1>
 <% if !@posts.nil? %>
+<h1>現在の目標</h1>
     <% @posts.each do |post| %>
-      <p>目標:<%= post.title %></p>
+      <h2>目標:<%= post.title %></h2>
+      <p>締切:<%= post.due_date %></p>
       <p>詳細:<%= post.introduction %></p>
-      <p>投稿者:</p><br>
     <% end %>
   <% else %>
       <p>投稿がありません</p>
 <% end %>
-<section class="center-vertical">
-  <h1><%= current_user.name %>のイイねした投稿</h1>
-  <p>イイねがありません</p>
-</section>
+
+<h1>参加している目標</h1>
+<p>参加している目標はないよ</p>
 
 <section class="center-vertical">
-  <h1><%= current_user.name %>のフォロー</h1>
-  <a href="#">フォロー解除</a><br>
-</section>
-
-<section class="center-vertical">
-  <h1><%= current_user.name %>のフォロワー</h1>
+  <h1><%= current_user.name %>さんの参加している目標</h1>
+  <a href="#">目標からはずれる</a><br>
 </section>

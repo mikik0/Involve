@@ -12,6 +12,12 @@ helpers do
   end
 end
 
+before '/goal' do
+  if current_user.nil?
+    redirect '/'
+  end
+end
+
 get '/' do
   @posts = Post.all
   @categories = Category.all
@@ -19,8 +25,12 @@ get '/' do
 end
 
 get '/home' do
-  @posts = Post.all
   @categories = Category.all
+  if current_user.nil?
+    redirect '/'
+  else
+    @posts = current_user.posts
+  end
   erb :home
 end
 
@@ -57,17 +67,22 @@ get '/signout' do
   redirect '/'
 end
 
-get '/post' do
+get '/goal' do
   @categories = Category.all
+  if current_user.nil?
+    redirect '/'
+  end
   erb :post
 end
 
-post '/post' do
-  Post.create(
-    user_id: session[:user],
-    title: params[:title],
-    category_id: params[:category_id],
-    due_date: params[:date]
-  )
-  redirect '/'
+post '/goal' do
+  date = params[:due_date].split('-')
+      if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
+      current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction])
+p "######################"
+p params[:introduction]
+      redirect '/'
+    else
+      redirect '/post'
+    end
 end

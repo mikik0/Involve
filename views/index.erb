@@ -5,13 +5,15 @@
     <input class="form-control col-lg-4" type="submit" value="ログイン">
   </form>
 <% end %>
-<h1>最新の投稿</h1>
+<h1>みんなの投稿</h1>
 <% if !@posts.nil? %>
     <% @posts.each do |post| %>
-      <p>目標:<%= post.title %></p>
+      <h2>目標:<%= post.title %></h2>
+      <p>締切:<%= post.due_date %></p>
       <p>詳細:<%= post.introduction %></p>
       <p>カテゴリー:<%= post.category_id %></p>
-      <p>投稿者:</p><br>
+      <p>投稿者:<%= post.user.name %></p>
+      <p><button>参加</button>
     <% end %>
   <% else %>
       <p>投稿がありません</p>

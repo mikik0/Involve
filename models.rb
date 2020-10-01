@@ -7,15 +7,17 @@ end
 
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :posts
   validates :name, presence: true
   validates :password,
     length: { in: 3..30 }
 end
 
 class Post < ActiveRecord::Base
-  has_many :categories
+  belongs_to :user
+  belongs_to :category
 end
 
 class Category < ActiveRecord::Base
-  belongs_to :posts
+  has_many :posts
 end
