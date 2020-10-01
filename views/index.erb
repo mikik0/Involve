@@ -8,12 +8,14 @@
 <h1>みんなの投稿</h1>
 <% if !@posts.nil? %>
     <% @posts.each do |post| %>
+    <form action="/goal/<%= post.id %>/join" method="post">
       <h2>目標:<%= post.title %></h2>
       <p>締切:<%= post.due_date %></p>
       <p>詳細:<%= post.introduction %></p>
       <p>カテゴリー:<%= post.category_id %></p>
       <p>投稿者:<%= post.user.name %></p>
-      <p><button>参加</button>
+      <input type="submit" value="参加">
+    </form>
     <% end %>
   <% else %>
       <p>投稿がありません</p>

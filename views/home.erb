@@ -11,7 +11,12 @@
 <% end %>
 
 <h1>参加している目標</h1>
+<!-- 要修正 -->
+<% @follows.each do |follow| %>
+  <%= follow.user_id %>
+<% end %>
 <p>参加している目標はないよ</p>
+
 
 <section class="center-vertical">
   <h1><%= current_user.name %>さんの参加している目標</h1>

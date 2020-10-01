@@ -8,6 +8,7 @@ end
 class User < ActiveRecord::Base
   has_secure_password
   has_many :posts
+  has_many :follows
   validates :name, presence: true
   validates :password,
     length: { in: 3..30 }
@@ -16,8 +17,15 @@ end
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_many :follows
 end
 
 class Category < ActiveRecord::Base
   has_many :posts
+end
+
+class Follow < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :post
+  validates_uniqueness_of :post_id, scope: :user_id
 end

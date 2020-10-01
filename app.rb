@@ -26,6 +26,7 @@ end
 
 get '/home' do
   @categories = Category.all
+  @follows = Follow.all
   if current_user.nil?
     redirect '/'
   else
@@ -79,10 +80,15 @@ post '/goal' do
   date = params[:due_date].split('-')
       if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
       current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction])
-p "######################"
-p params[:introduction]
       redirect '/'
     else
       redirect '/post'
     end
+end
+
+post '/goal/:id/join' do
+  @posts = Post.all
+  post = Post.find(params[:id])
+  @follow = current_user.follows.create(post_id: params[:post_id])
+  redirect '/'
 end
