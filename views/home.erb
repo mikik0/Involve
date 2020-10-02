@@ -5,6 +5,7 @@
       <h2>目標:<%= post.title %></h2>
       <p>締切:<%= post.due_date %></p>
       <p>詳細:<%= post.introduction %></p>
+      <button>アクション</button>
     <% end %>
   <% else %>
       <p>投稿がありません</p>
@@ -13,7 +14,7 @@
 <h1>参加している目標</h1>
 <!-- 要修正 -->
 <% @follows.each do |follow| %>
-  <%= follow.user_id %>
+  <%= follow.post_id %>
 <% end %>
 <p>参加している目標はないよ</p>
 

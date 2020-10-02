@@ -14,7 +14,9 @@
       <p>詳細:<%= post.introduction %></p>
       <p>カテゴリー:<%= post.category_id %></p>
       <p>投稿者:<%= post.user.name %></p>
+      <% if !current_user.nil? %>
       <input type="submit" value="参加">
+      <% end %>
     </form>
     <% end %>
   <% else %>

@@ -92,3 +92,7 @@ post '/goal/:id/join' do
   @follow = current_user.follows.create(post_id: params[:post_id])
   redirect '/'
 end
+
+get '/comment' do
+  erb :action
+end
