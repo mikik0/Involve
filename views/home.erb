@@ -1,6 +1,6 @@
-<h1><%= current_user.name %>さんのマイページ</h1>
+<h1 class="text-4xl text-700 text-center font-semibold"><%= current_user.name %>さんのマイページ</h1>
 <% if !@posts.nil? %>
-<h1>現在の目標</h1>
+<h1 class="text-4xl text-700 font-semibold">現在の目標</h1>
     <% @posts.each do |post| %>
       <h2>目標:<%= post.title %></h2>
       <p>締切:<%= post.due_date %></p>
@@ -11,7 +11,7 @@
       <p>投稿がありません</p>
 <% end %>
 
-<h1>参加している目標</h1>
+<h1 class="text-4xl text-700 font-semibold">参加している目標</h1>
 <!-- 要修正 -->
 <% @follows.each do |follow| %>
   <%= follow.post_id %>
@@ -20,6 +20,6 @@
 
 
 <section class="center-vertical">
-  <h1><%= current_user.name %>さんの参加している目標</h1>
+  <h1 class="text-4xl text-700 font-semibold"><%= current_user.name %>さんの参加している目標</h1>
   <a href="#">目標からはずれる</a><br>
 </section>

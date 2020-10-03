@@ -3,27 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>もくちか！</title>
+  <script src="/assets/js/index.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="/assets/css/index.css">
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 <body>
-<nav class="center-hrizontal">
-  <a href="/">もくちか！</a>
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+  <a href="/">
+    <span class="font-semibold text-xl tracking-tight">もくちか！</span>
+  </a>
+  </div>
   <% if !current_user.nil? %>
-    <a href="/home"></a></li>
-    <a href="#">search</a></li>
-    <a href="/home">home</a></li>
-    <a href="/goal">post</a></li>
-    <a href="/comment">action</a></li>
-    <a href="/signout">logout</a>
-  <% else %>
-    <a href="/signup">新規登録</a>
+  <div class="block lg:hidden">
+    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    </button>
+  </div>
+  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="text-sm lg:flex-grow">
+      <a href="/home" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        home
+      </a>
+      <a href="/goal" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        post
+      </a>
+      <a href="/comment" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        action
+      </a>
+      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        search
+      </a>
+      <a href="/signout" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+        logout
+      </a>
+    </div>
+    <% else %>
+    <a href="/signup" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">新規登録</a>
   <% end %>
+  </div>
 </nav>
 <main>
 
 <%= yield %>
-
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <script>
+    function addDarkmodeWidget() {
+      new Darkmode().showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
 </main>
 </body>
 </html>
