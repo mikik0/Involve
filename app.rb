@@ -94,5 +94,6 @@ post '/goal/:id/join' do
 end
 
 get '/comment' do
+  @posts = Post.all
   erb :action
 end
