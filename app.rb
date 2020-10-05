@@ -86,10 +86,12 @@ post '/goal' do
     end
 end
 
-post '/goal/:id/join' do
-  @posts = Post.all
-  post = Post.find(params[:id])
-  @follow = current_user.follows.create(post_id: params[:post_id])
+post '/goal/:post_id/join' do
+  @posts = Post.all.order(id: "DESC")
+  post = Post.find(params[:post_id])
+  @follow = current_user.follows.create(post_id: params[:post_id],user_id: params[:user_id])
+  p '##################'
+  p params
   redirect '/'
 end
 
@@ -100,4 +102,14 @@ end
 
 get '/goal/result' do
   erb :details
+end
+
+post '/goal/:id/comment' do
+  #@comments = Comment.all.order(id: "DESC")
+  #@follow = Follow.all
+  #post = Post.find(params[:post_id])
+  #@comment = current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id])
+  p '##################'
+  p params
+  redirect '/home'
 end
