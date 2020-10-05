@@ -12,17 +12,14 @@
         <div>
           <p class="text-gray-600 font-medium"><%= post.user.name %></p>
           <div class="flex items-center text-xs text-gray-400">
-            <p><%= post.category_id %></p>
+            <p><%= post.category.name %></p>
           </div>
         </div>
       </div>
       <div class="mt-6">
       <h2 class="text-2xl">目標:<%= post.title %></h2>
         <p class="text-gray-600 text-sm">
-        詳細:<%= post.introduction %>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          cursus ornare nibh, sit amet interdum lorem suscipit at. Ut cursus
-          condimentum neque vel gravida.
+        <%= post.introduction %>
         </p>
       </div>
       <div class="mt-6 flex">

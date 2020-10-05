@@ -19,7 +19,7 @@ before '/goal' do
 end
 
 get '/' do
-  @posts = Post.all
+  @posts = Post.all.order(id: "DESC")
   @categories = Category.all
   erb :index
 end
@@ -30,7 +30,7 @@ get '/home' do
   if current_user.nil?
     redirect '/'
   else
-    @posts = current_user.posts
+    @posts = current_user.posts.order(id: "DESC")
   end
   erb :home
 end
@@ -79,7 +79,7 @@ end
 post '/goal' do
   date = params[:due_date].split('-')
       if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
-      current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction])
+      current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction],category_id: params[:category_id])
       redirect '/'
     else
       redirect '/post'
@@ -96,4 +96,8 @@ end
 get '/comment' do
   @posts = Post.all
   erb :action
+end
+
+get '/goal/result' do
+  erb :details
 end
