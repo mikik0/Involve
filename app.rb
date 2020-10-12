@@ -21,12 +21,13 @@ end
 get '/' do
   @posts = Post.all.order(id: "DESC")
   @categories = Category.all
+  @follow = Follow.where(post_id: @posts).count
   erb :index
 end
 
 get '/home' do
   @categories = Category.all
-  @follows = Follow.all
+  @follows = current_user.follows.order(id: "DESC")
   if current_user.nil?
     redirect '/'
   else
@@ -86,6 +87,7 @@ post '/goal' do
     end
 end
 
+#目標に参加
 post '/goal/:post_id/join' do
   @posts = Post.all.order(id: "DESC")
   post = Post.find(params[:post_id])
@@ -94,6 +96,8 @@ post '/goal/:post_id/join' do
   p params
   redirect '/'
 end
+#目標に不参加
+
 
 get '/comment' do
   @posts = Post.all
