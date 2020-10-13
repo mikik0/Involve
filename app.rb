@@ -21,6 +21,7 @@ end
 get '/' do
   @posts = Post.all.order(id: "DESC")
   @categories = Category.all
+  #直す
   @follow = Follow.where(post_id: @posts).count
   erb :index
 end
@@ -28,6 +29,8 @@ end
 get '/home' do
   @categories = Category.all
   @follows = current_user.follows.order(id: "DESC")
+  #直す
+  @follow = Follow.where(post_id: @posts).count
   if current_user.nil?
     redirect '/'
   else
@@ -101,10 +104,14 @@ end
 
 get '/comment' do
   @posts = Post.all
+  @follows = current_user.follows.order(id: "DESC")
   erb :action
 end
 
-get '/goal/result' do
+get '/goal/:post_id/result' do
+  @posts = Post.all.order(id: "DESC")
+  post = Post.find(params[:post_id])
+  @follow = current_user.follows.create(post_id: params[:post_id],user_id: params[:user_id])
   erb :details
 end
 

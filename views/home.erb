@@ -1,17 +1,15 @@
 <ul class="flex border-b">
   <li class="-mb-px mr-1">
-    <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold" href="#">Active</a>
+    <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold" href="#">投稿した目標</a>
   </li>
   <li class="mr-1">
-    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Tab</a>
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">参加中</a>
   </li>
   <li class="mr-1">
-    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Tab</a>
-  </li>
-  <li class="mr-1">
-    <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Tab</a>
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">終了</a>
   </li>
 </ul>
+
 <h1 class="text-4xl text-700 text-center font-semibold"><%= current_user.name %>さんのマイページ</h1>
 <% if !@posts.nil? %>
 <h1 class="text-4xl text-700 font-semibold">投稿した目標</h1>
@@ -52,7 +50,7 @@
           </i>
           <p class="mt-1 text-blue-400">4 Join</p>
         </div>
-        <button class="flex items-center hover:opacity-75">
+        <button class="flex items-center hover:opacity-75" onclick="location.href='#' ">
           <i class="mr-2">
             <svg
               class="fill-current text-blue-300 w-6 h-6"
@@ -91,7 +89,7 @@
           </div>
         </div>
         <div>
-          <p class="text-gray-600 font-medium"><%= follow.user.name %></p>
+          <p class="text-gray-600 font-medium"><%= follow.post.user.name %></p>
           <div class="flex items-center text-xs text-gray-400">
 
           </div>
@@ -119,7 +117,7 @@
           </i>
           <p class="mt-1 text-blue-400"><%= @follow %> Join</p>
         </div>
-        <button class="flex items-center hover:opacity-75">
+        <button class="flex items-center hover:opacity-75" onclick="location.href='/' ">
           <i class="mr-2">
             <svg
               class="fill-current text-blue-300 w-6 h-6"
@@ -157,7 +155,7 @@
           </div>
         </div>
         <div>
-          <p class="text-gray-600 font-medium"><%= follow.user.name %></p>
+          <p class="text-gray-600 font-medium"><%= follow.post.user.name %></p>
           <div class="flex items-center text-xs text-gray-400">
 
           </div>

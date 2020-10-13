@@ -1,9 +1,9 @@
 <main class='container mx-auto'>
-<form action="/goal/<%= post.id %>/comment" method="post" >
+<form action="#" method="post" >
     目標を選択:
     <select name="category_id" id="category_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-       <% @posts.each do |post| %>
-        <option value="<%= post.id %>"><%= post.title %></option>
+       <% @follows.each do |follow| %>
+        <option value="<%= follow.post.id %>"><%= follow.post.title %></option>
        <% end %>
     </select><br>
     今日の記録: <textarea rows="5" cols="30" name="introduction" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" ></textarea><br>
