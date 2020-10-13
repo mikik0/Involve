@@ -14,6 +14,7 @@
 <% if !@posts.nil? %>
 <h1 class="text-4xl text-700 font-semibold">投稿した目標</h1>
     <% @posts.each do |post| %>
+<div class="DivLink" onclick="location.href='/'">
     <div class="p-8">
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <div class="flex">
@@ -72,6 +73,7 @@
       </div>
     </div>
   </div>
+</div>
     <% end %>
   <% else %>
       <p>投稿がありません</p>
@@ -81,6 +83,7 @@
 <!-- もしdoneしたら、色を赤系の色にする。 -->
 <% if !@follows.nil? %>
 <% @follows.each do |follow| %>
+<div class="DivLink" onclick="location.href='/'">
 <div class="p-8">
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <div class="flex">
@@ -139,6 +142,7 @@
       </div>
     </div>
   </div>
+</div>
 <% end %>
 <% else %>
 <p>参加している目標はないよ</p>

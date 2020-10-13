@@ -1,0 +1,13 @@
+.fixed_btn{
+  color: aquamarine;
+  background-color: rgb(34, 39, 37);
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 6px 40px;
+}
+
+.DivLink {
+  position: relative;
+  cursor: pointer;
+}

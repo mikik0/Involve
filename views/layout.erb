@@ -6,10 +6,10 @@
   <script src="/assets/js/index.js"></script>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/index.css">
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 <body>
-<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-1">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
   <a href="/">
     <span class="font-semibold text-xl tracking-tight">Mokutika</span>
@@ -49,13 +49,16 @@
 <main>
 
 <%= yield %>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
     function addDarkmodeWidget() {
       new Darkmode().showWidget();
     }
     window.addEventListener('load', addDarkmodeWidget);
-  </script>
+  </script> -->
+
+<button class="fixed_btn" onclick="location.href='/goal'">投稿</button>
+
 </main>
 </body>
 </html>
