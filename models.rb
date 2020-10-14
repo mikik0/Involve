@@ -19,6 +19,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :follows
+  has_many :comments
 end
 
 class Category < ActiveRecord::Base
@@ -31,6 +32,7 @@ class Follow < ActiveRecord::Base
   validates_uniqueness_of :post_id, scope: :user_id
 end
 
-class Comments < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   belongs_to :user
+  belongs_to :post
 end

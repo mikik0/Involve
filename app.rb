@@ -83,7 +83,8 @@ end
 post '/goal' do
   date = params[:due_date].split('-')
       if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
-      current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction],category_id: params[:category_id])
+      post = current_user.posts.create!(title: params[:title],due_date: Date.parse(params[:due_date]),introduction: params[:introduction],category_id: params[:category_id])
+      current_user.follows.create(post_id: post.id)
       redirect '/'
     else
       redirect '/post'
@@ -115,11 +116,13 @@ get '/goal/:post_id/result' do
   erb :details
 end
 
-post '/goal/:id/comment' do
-  #@comments = Comment.all.order(id: "DESC")
-  #@follow = Follow.all
-  #post = Post.find(params[:post_id])
-  #@comment = current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id])
+get '/goal/:post_id/details' do
+  @post = Post.find(params[:post_id])
+  erb :goal
+end
+
+post '/goal/comment' do
+  @comment = current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id])
   p '##################'
   p params
   redirect '/home'

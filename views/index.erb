@@ -14,6 +14,7 @@
 <div class="justify-start sm:justify-center md:justify-end lg:justify-between xl:justify-around">
 <% if !@posts.nil? %>
     <% @posts.each do |post| %>
+<div class="DivLink" onclick="location.href='/goal/<%= post.id %>/details'">
   <form action="/goal/<%= post.id %>/join" method="post">
     <div class="p-8">
     <div class="
@@ -63,7 +64,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"><%= @follow %> Join</p>
+          <p class="mt-1 text-blue-400"><%= post.follows.length %> Join</p>
         </button>
         <% end %>
         <form method="get" action="/goal/result">
@@ -80,7 +81,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">64 Comments</p>
+          <p class="mt-1 text-blue-400"><%= post.comments.length %> Comments</p>
         </button>
         </form>
       </div>
@@ -96,6 +97,7 @@
   </div>
   </form>
     <% end %>
+  </div>
 </div>
   <% else %>
       <p>投稿がありません</p>

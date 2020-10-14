@@ -16,7 +16,13 @@
     <% @posts.each do |post| %>
 <div class="DivLink" onclick="location.href='/'">
     <div class="p-8">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="
+    <% if (post.due_date - Date.today).to_i < 0 %>
+    bg-gray-300 p-6 rounded-lg shadow-lg
+    <% else %>
+    bg-white p-6 rounded-lg shadow-lg
+    <% end %>
+    ">
       <div class="flex">
         <div>
           <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
