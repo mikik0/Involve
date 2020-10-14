@@ -122,7 +122,7 @@ get '/goal/:post_id/details' do
 end
 
 post '/goal/comment' do
-  @comment = current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id])
+  current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id],comment: params[:comment])
   p '##################'
   p params
   redirect '/home'
