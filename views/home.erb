@@ -14,7 +14,7 @@
 <% if !@posts.nil? %>
 <h1 class="text-4xl text-700 font-semibold">投稿した目標</h1>
     <% @posts.each do |post| %>
-<div class="DivLink" onclick="location.href='/'">
+<div class="DivLink" onclick="location.href='/goal/<%= post.id %>/details'">
     <div class="p-8">
     <div class="
     <% if (post.due_date - Date.today).to_i < 0 %>
@@ -55,7 +55,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">4 Join</p>
+          <p class="mt-1 text-blue-400"><%= post.follows.length %> Join</p>
         </div>
         <button class="flex items-center hover:opacity-75" onclick="location.href='#' ">
           <i class="mr-2">
@@ -70,7 +70,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">64 Comments</p>
+          <p class="mt-1 text-blue-400"><%= post.comments.length %> Comments</p>
         </button>
       </div>
       <p class="text-gray-600 font-medium">締切:<%= post.due_date %></p>
@@ -89,6 +89,7 @@
 <!-- もしdoneしたら、色を赤系の色にする。 -->
 <% if !@follows.nil? %>
 <% @follows.each do |follow| %>
+<% @posts.each do |post| %>
 <div class="DivLink" onclick="location.href='/'">
 <div class="p-8">
     <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -124,7 +125,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"><%= @follow %> Join</p>
+          <p class="mt-1 text-blue-400"><%= post.follows.length %> Join</p>
         </div>
         <button class="flex items-center hover:opacity-75" onclick="location.href='/' ">
           <i class="mr-2">
@@ -139,7 +140,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">64 Comments</p>
+          <p class="mt-1 text-blue-400"><%= post.comments.length %>Comments</p>
         </button>
       </div>
       <p class="text-gray-600 font-medium">締切:<%= follow.post.due_date %></p>
@@ -149,6 +150,7 @@
     </div>
   </div>
 </div>
+<% end %>
 <% end %>
 <% else %>
 <p>参加している目標はないよ</p>

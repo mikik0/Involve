@@ -1,5 +1,4 @@
-<h1>xxxの詳細ページ</h1>
-
+<!-- <h1>xxxの詳細ページ</h1> -->
 <div class="p-8">
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <div class="flex">
@@ -34,7 +33,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">4 Join</p>
+          <p class="mt-1 text-blue-400"><%= @post.follows.length %> Join</p>
         </div>
         <button class="flex items-center hover:opacity-75" onclick="location.href='#' ">
           <i class="mr-2">
@@ -49,7 +48,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">64 Comments</p>
+          <p class="mt-1 text-blue-400"><%= @post.comments.length %> Comments</p>
         </button>
       </div>
       <p class="text-gray-600 font-medium">締切:<%= @post.due_date %></p>
@@ -67,17 +66,14 @@
           </div>
         </div>
         <div>
-          <p class="text-gray-600 font-medium">コメントのuser</p>
+          <p class="text-gray-600 font-medium"><%= comment.user.name %></p>
           <div class="flex items-center text-xs text-gray-400">
-            <p>category.name</p>
             <p>投稿日</p>
           </div>
         </div>
       </div>
       <div class="mt-6">
-       <h2 class="text-2xl">本文</h2>
-      </div>
-      <div class="mt-6 flex">
+       <h2 class="text-2xl"><%= comment.comment %></h2>
       </div>
       <div class="mt-6 border-gray-100 border-t pt-4 flex justify-between">
       </div>

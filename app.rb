@@ -28,9 +28,15 @@ end
 
 get '/home' do
   @categories = Category.all
+  @posts = Post.all
   @follows = current_user.follows.order(id: "DESC")
   #直す
   @follow = Follow.where(post_id: @posts).count
+  p "##########################################"
+  for post in @posts do
+    p "==================="
+    p post.follows
+  end
   if current_user.nil?
     redirect '/'
   else
@@ -118,6 +124,7 @@ end
 
 get '/goal/:post_id/details' do
   @post = Post.find(params[:post_id])
+  @comments = Comment.where(post_id: @post).order(id: "DESC")
   erb :goal
 end
 
