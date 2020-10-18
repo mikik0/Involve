@@ -56,7 +56,9 @@
     window.addEventListener('load', addDarkmodeWidget);
   </script> -->
 
-<button class="fixed_btn" onclick="location.href='/goal'">投稿</button>
+<% if !current_user.nil? %>
+  <button class="fixed_btn" onclick="location.href='/goal'">投稿</button>
+<% end %>
 
 </main>
 </body>

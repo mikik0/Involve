@@ -200,7 +200,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">4 Join</p>
+          <p class="mt-1 text-blue-400"><%= follow.post.follows.length %>Join</p>
         </div>
         <button class="flex items-center hover:opacity-75">
           <i class="mr-2">
@@ -215,7 +215,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400">64 Comments</p>
+          <p class="mt-1 text-blue-400"><%= follow.post.comments.length %> Comments</p>
         </button>
       </div>
       <p class="text-gray-600 font-medium">締切:<%= follow.post.due_date %></p>
