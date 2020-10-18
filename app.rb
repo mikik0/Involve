@@ -20,19 +20,19 @@ end
 
 get '/' do
   @posts = Post.all.order(id: "DESC")
-  @categories = Category.all
-  #直す
   @follow = Follow.where(post_id: @posts).count
   erb :index
 end
 
 get '/home' do
-  @categories = Category.all
   @posts = Post.all
   @follows = current_user.follows.order(id: "DESC")
   #直す
   @follow = Follow.where(post_id: @posts).count
-  p "##########################################"
+  if current_user.nil?
+    redirect '/'
+  end
+  p "######/home######################"
   for post in @posts do
     p "==================="
     p post.follows
@@ -102,8 +102,6 @@ post '/goal/:post_id/join' do
   @posts = Post.all.order(id: "DESC")
   post = Post.find(params[:post_id])
   @follow = current_user.follows.create(post_id: params[:post_id],user_id: params[:user_id])
-  p '##################'
-  p params
   redirect '/'
 end
 #目標に不参加
@@ -112,6 +110,9 @@ end
 get '/comment' do
   @posts = Post.all
   @follows = current_user.follows.order(id: "DESC")
+  if current_user.nil?
+    redirect '/'
+  end
   erb :action
 end
 
@@ -130,7 +131,17 @@ end
 
 post '/goal/comment' do
   current_user.comments.create(post_id: params[:post_id],user_id: params[:user_id],comment: params[:comment])
-  p '##################'
-  p params
+  redirect '/home'
+end
+
+post '/done/:post_id' do
+  @post = Post.find(params[:post_id])
+  if @post.done == 0
+    @post.update(done: 1)
+  else @post.done == 1
+    @post.update(done: 0)
+  end
+  p "###############%%%%%%########3"
+  p @post.done
   redirect '/home'
 end

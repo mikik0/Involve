@@ -67,8 +67,7 @@
           <p class="mt-1 text-blue-400"><%= post.follows.length %> Join</p>
         </button>
         <% end %>
-        <form method="get" action="/goal/result">
-        <button class="flex items-center hover:opacity-75" type="submit">
+        <div class="flex items-center hover:opacity-75">
           <i class="mr-2">
             <svg
               class="fill-current text-blue-300 w-6 h-6"
@@ -82,7 +81,7 @@
             </svg>
           </i>
           <p class="mt-1 text-blue-400"><%= post.comments.length %> Comments</p>
-        </button>
+        </div>
         </form>
       </div>
       <p class="text-gray-600 font-medium">締切:<%= post.due_date %></p>

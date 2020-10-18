@@ -53,6 +53,15 @@
       </div>
       <p class="text-gray-600 font-medium">締切:<%= @post.due_date %></p>
       <div class="mt-6 border-gray-100 border-t pt-4 flex justify-between">
+      <button class="flex items-center opacity-75 mr-4">
+          <% unless @post.done %>
+            <form action="/done/<%= @post.id %>" method="post">
+             <input type="submit" value="Done?">
+            </form>
+          <% else %>
+            Done!
+          <% end %>
+      </button>
     </div>
   </div>
 </div>
