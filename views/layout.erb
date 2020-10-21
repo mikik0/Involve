@@ -10,9 +10,9 @@
 <body>
 <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-1">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-  <a href="/">
-    <span class="font-semibold text-xl tracking-tight">Mokutika</span>
-  </a>
+    <a href="/">
+      <span class="font-semibold text-xl tracking-tight">Mokutika</span>
+    </a>
   </div>
   <% if !current_user.nil? %>
   <div class="block lg:hidden">
@@ -42,10 +42,10 @@
   </form>
     <a href="/signup" class="inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">新規登録</a>
   <% end %>
-  </div>
+    </div>
   </div>
 </nav>
-<main>
+ <main>
 
 <%= yield %>
   <!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
@@ -60,6 +60,6 @@
   <button class="fixed_btn mb-3 rounded-full flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400"  onclick="location.href='/goal'">投稿</button>
 <% end %>
 
-</main>
+ </main>
 </body>
 </html>
