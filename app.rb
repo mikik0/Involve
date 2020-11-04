@@ -80,14 +80,8 @@ end
 post '/signup' do
   img_url = ''
   if params[:file]
-    p '========'
-    p params[:file]
     img = params[:file]
-    p '&&&&&&&'
-    p img
     tempfile = img[:tempfile]
-    p '$$$$$$'
-    p tempfile
     upload = Cloudinary::Uploader.upload(tempfile.path)
     img_url = upload['url']
   end
