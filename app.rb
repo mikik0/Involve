@@ -4,11 +4,26 @@ require 'sinatra/reloader' if development?
 
 require 'sinatra/activerecord'
 require './models'
+require 'dotenv/load'
+
+require 'open-uri'
+require 'net/http'
+require 'json'
+require 'sinatra/json'
 enable :sessions
 
 helpers do
   def current_user
     User.find_by(id: session[:user])
+  end
+end
+
+before do
+  Dotenv.load
+  Cloudinary.config do |config|
+    config.cloud_name = ENV['CLOUD_NAME']
+    config.api_key    = ENV['CLOUDINARY_API_KEY']
+    config.api_secret = ENV['CLOUDINARY_API_SECRET']
   end
 end
 
@@ -27,6 +42,7 @@ end
 get '/home' do
   @posts = Post.all
   @follows = current_user.follows.order(id: "DESC")
+  @users = User.all
   #直す
   @follow = Follow.where(post_id: @posts).count
   if current_user.nil?
@@ -62,10 +78,25 @@ post '/signin' do
 end
 
 post '/signup' do
+  img_url = ''
+  if params[:file]
+    p '========'
+    p params[:file]
+    img = params[:file]
+    p '&&&&&&&'
+    p img
+    tempfile = img[:tempfile]
+    p '$$$$$$'
+    p tempfile
+    upload = Cloudinary::Uploader.upload(tempfile.path)
+    img_url = upload['url']
+  end
+
   user = User.create(
     name: params[:name],
     password: params[:password],
-    password_confirmation: params[:password_confirmation]
+    password_confirmation: params[:password_confirmation],
+    img: img_url
   )
   if user.persisted?
     session[:user] = user.id

@@ -3,8 +3,12 @@
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <div class="flex">
         <div>
-          <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
-          </div>
+        <% if !@post.user.img.empty? %>
+         <img src = "<%= @post.user.img %>" alt=" " class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner">
+        <% else %>
+         <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
+         </div>
+        <% end %>
         </div>
         <div>
           <p class="text-gray-600 font-medium"><%= @post.user.name %></p>
@@ -73,8 +77,12 @@
     <div class="bg-white p-6 rounded-lg shadow-lg">
       <div class="flex">
         <div>
-          <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
-          </div>
+        <% if !comment.user.img.empty? %>
+         <img src = "<%= post.user.img %>" alt=" " class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner">
+        <% else %>
+         <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
+         </div>
+        <% end %>
         </div>
         <div>
           <p class="text-gray-600 font-medium"><%= comment.user.name %></p>
