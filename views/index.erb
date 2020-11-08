@@ -26,7 +26,7 @@
     ">
       <div class="flex">
         <div>
-         <% if !post.user.img.empty? %>
+         <% if !post.user.img.blank? %>
            <img src = "<%= post.user.img %>" alt=" " class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner">
          <% else %>
            <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
