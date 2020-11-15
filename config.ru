@@ -4,5 +4,5 @@ Bundler.require
 require './app'
 run Sinatra::Application
 
-config.time_zone = "Tokyo"
-config.active_record.default_timezone = :local
+Time.zone = 'Tokyo'
+ActiveRecord::Base.default_timezone = :local

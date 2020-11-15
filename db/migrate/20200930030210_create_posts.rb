@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.string "title"
       t.string "introduction"
+      t.integer "done"
       t.integer "user_id"
       t.integer "category_id"
       t.date "due_date"

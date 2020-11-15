@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>もくちか！</title>
+  <title>Mokutika!</title>
   <script src="/assets/js/index.js"></script>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/index.css">
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<<<<<<< HEAD
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8M3DCEKWN9"></script>
   <script>
@@ -16,14 +16,28 @@
     gtag('js', new Date());
 
     gtag('config', 'G-8M3DCEKWN9');
+=======
+  <script src=“/assets/js/index.js”></script>
+  <link href=“https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css” rel=“stylesheet”>
+  <link rel=“shortcut icon” href=“favicon.ico”>
+  <link rel=“stylesheet” href=“/assets/css/index.css”>
+  <link href=“https://fonts.googleapis.com/css?family=Righteous” rel=“stylesheet”>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src=“https://www.googletagmanager.com/gtag/js?id=G-8M3DCEKWN9”></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag(‘js’, new Date());
+    gtag(‘config’, ‘G-8M3DCEKWN9’);
+>>>>>>> 3c7d4c7939182d3bf65de699467ff0b758460b3d
   </script>
 </head>
 <body>
-<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-1">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-  <a href="/">
-    <span class="font-semibold text-xl tracking-tight">もくちか！</span>
-  </a>
+    <a href="/">
+      <span class="font-semibold text-xl tracking-tight">Mokutika</span>
+    </a>
   </div>
   <% if !current_user.nil? %>
   <div class="block lg:hidden">
@@ -34,19 +48,16 @@
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
       <a href="/home" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-200 hover:text-white mr-4">
-        home
+        マイページ
       </a>
       <a href="/goal" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-200 hover:text-white mr-4">
-        post
+        目標投稿
       </a>
       <a href="/comment" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-200 hover:text-white mr-4">
-        action
-      </a>
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-200 hover:text-white mr-4">
-        search
+        今日の記録
       </a>
       <a href="/signout" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-teal-200 hover:text-white">
-        logout
+        ログアウト
       </a>
     <% else %>
   <form action="/signin" method="post">
@@ -56,19 +67,24 @@
   </form>
     <a href="/signup" class="inline-block text-base px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">新規登録</a>
   <% end %>
-  </div>
+    </div>
   </div>
 </nav>
-<main>
+ <main>
 
 <%= yield %>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
     function addDarkmodeWidget() {
       new Darkmode().showWidget();
     }
     window.addEventListener('load', addDarkmodeWidget);
-  </script>
-</main>
+  </script> -->
+
+<% if !current_user.nil? %>
+  <button class="fixed_btn mb-3 rounded-full flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400"  onclick="location.href='/goal'">投稿</button>
+<% end %>
+
+ </main>
 </body>
 </html>
