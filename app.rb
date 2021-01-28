@@ -3,7 +3,12 @@ Bundler.require
 require 'sinatra/reloader' if development?
 
 require 'sinatra/activerecord'
-require './models'
+require './models/user.rb'
+require './models/post.rb'
+require './models/category.rb'
+require './models/comment.rb'
+require './models/done.rb'
+require './models/follow.rb'
 require 'dotenv/load'
 
 require 'open-uri'
